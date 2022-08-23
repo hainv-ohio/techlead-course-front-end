@@ -8,7 +8,7 @@ class UserRepository {
                 password: params.password,
             });
             customHeaders.authorization = response.headers.authorization;
-            ReactSession.set("token", response.headers.authorization);
+            // ReactSession.set("token", response.headers.authorization);
             console.log(response)
             return response;
         } catch (e) {
@@ -26,7 +26,7 @@ class UserRepository {
                 password: params.password,
             });
             customHeaders.authorization = response.headers.authorization;
-            ReactSession.set("token", response.headers.authorization);
+            // ReactSession.set("token", response.headers.authorization);
             console.log(response)
             return response;
         } catch (e) {

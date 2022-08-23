@@ -14,7 +14,6 @@ import "~/styles/scss/home-1.scss";
 import "~/styles/platform/custom.scss";
 import "~/styles/platform/themes/home-one.scss";
 import Head from "next/head";
-import { ReactSession } from 'react-client-session';
 
 
 function App({ Component, pageProps }) {

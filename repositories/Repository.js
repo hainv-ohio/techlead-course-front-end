@@ -6,7 +6,7 @@ export const baseUrlProduct = "https://mymedi.noudeveloper.com";
 
 export const customHeaders = {
     Accept: "application/json",
-    authorization: ReactSession.get("token")
+    // authorization: ReactSession.get("token")
 };
 
 export const baseUrl = `${baseDomain}`;
