@@ -3,15 +3,29 @@ import Container from "~/components/layouts/Container";
 import useUser from "~/hooks/useUser";
 
 const MyAccountScreen = () => {
-    const { loading, userLogin, currentUser } = useUser();
+    const { loading, userLogin, userRegister, currentUser } = useUser();
 
-    function handleSubmit(event) {
+    function handleLoginSubmit(event) {
         event.preventDefault()
         console.log('form submit', event);
         userLogin({
             email: event.currentTarget.elements.email.value,
             password: event.currentTarget.elements.password.value,
         })
+    }
+
+    function handleRegisterSubmit(event) {
+        event.preventDefault()
+        console.log('form submit', event);
+        if (event.currentTarget.elements.password.value == event.currentTarget.elements.re_password.value) {
+            userRegister({
+                firstName: event.currentTarget.elements.firstName.value,
+                lastName: event.currentTarget.elements.lastName.value,
+                email: event.currentTarget.elements.email.value,
+                phone: event.currentTarget.elements.phoneNumber.value,
+                password: event.currentTarget.elements.password.value,
+            })
+        }
     }
 
     console.log('currentUser', currentUser);
@@ -29,7 +43,7 @@ const MyAccountScreen = () => {
         contentBody = (
         <div className="row">
             <div className="col-12 col-md-6">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLoginSubmit}>
                     <div className="ps-form--review">
                         <h2 className="ps-form__title">
                             Login
@@ -87,18 +101,50 @@ const MyAccountScreen = () => {
                 </form>
             </div>
             <div className="col-12 col-md-6">
-                <form action="do_action" method="post">
+                <form onSubmit={handleRegisterSubmit}>
                     <div className="ps-form--review">
                         <h2 className="ps-form__title">
                             Register
                         </h2>
                         <div className="ps-form__group">
                             <label className="ps-form__label">
+                                First Name *
+                            </label>
+                            <input
+                                className="form-control ps-form__input"
+                                id="firstName"
+                                type="name"
+                            />
+                        </div>
+                        <div className="ps-form__group">
+                            <label className="ps-form__label">
+                                Last Name *
+                            </label>
+                            <input
+                                className="form-control ps-form__input"
+                                id="lastName"
+                                type="name"
+                            />
+                        </div>
+                        <div className="ps-form__group">
+                            <label className="ps-form__label">
                                 Email address *
                             </label>
                             <input
                                 className="form-control ps-form__input"
+                                id="email"
                                 type="email"
+                            />
+                        </div>
+
+                        <div className="ps-form__group">
+                            <label className="ps-form__label">
+                                Phone number *
+                            </label>
+                            <input
+                                className="form-control ps-form__input"
+                                id="phoneNumber"
+                                type="phone"
                             />
                         </div>
                         <div className="ps-form__group">
@@ -108,6 +154,23 @@ const MyAccountScreen = () => {
                             <div className="input-group">
                                 <input
                                     className="form-control ps-form__input"
+                                    id="password"
+                                    type="password"
+                                />
+                                <div className="input-group-append">
+                                    <a
+                                        className="fa fa-eye-slash toogle-password"
+                                        href="#"></a>
+                                </div>
+                            </div>
+                            
+                            <label className="ps-form__label">
+                                Re-input Password *
+                            </label>
+                            <div className="input-group">
+                                <input
+                                    className="form-control ps-form__input"
+                                    id="re_password"
                                     type="password"
                                 />
                                 <div className="input-group-append">

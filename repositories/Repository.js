@@ -1,9 +1,12 @@
 import axios from "axios";
+import React from 'react';
 export const baseDomain = process.env.NEXT_PUBLIC_API_ENDPOINT;
 export const baseUrlProduct = "https://mymedi.noudeveloper.com";
 
+
 export const customHeaders = {
     Accept: "application/json",
+    authorization: ReactSession.get("token")
 };
 
 export const baseUrl = `${baseDomain}`;

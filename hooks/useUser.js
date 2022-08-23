@@ -12,11 +12,20 @@ export default function useUser() {
         currentUser,
         userLogin: async (payload) => {
             setLoading(true);
-            const user = await UserRepository.login(payload);
+            const res = await UserRepository.login(payload);
+
             console.log('user login res', user);
-            setCurrentUser(user.data.data);
+            setCurrentUser(res.data.data);
             setLoading(false);
-        }
+        },
+        userRegister: async (payload) => {
+            setLoading(true);
+            const res = await UserRepository.register(payload);
+
+            console.log('user register res', user);
+            setCurrentUser(res.data.data);
+            setLoading(false);
+        },
     }
 
 }
