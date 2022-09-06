@@ -16,6 +16,10 @@ export default function useStore() {
         },
         getStore: async (storeId) => {
             
+        },
+
+        selectedStore : async(storeId) => {
+            console.log(storeId)
         }
 
     }
