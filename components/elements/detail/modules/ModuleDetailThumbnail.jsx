@@ -57,12 +57,13 @@ const ModuleDetailThumbnail = ({ product, vertical = true }) => {
 
     useEffect(() => {
         let images = [];
-        if (product && product.images.length > 0) {
+        if (product.images){
             product.images.map((item) => {
                 images.push(`${baseUrl}${item.url}`);
             });
             setProductImages(images);
         }
+       
         setGallery(galleryCarousel.current);
         setVariant(variantCarousel.current);
     }, [product]);

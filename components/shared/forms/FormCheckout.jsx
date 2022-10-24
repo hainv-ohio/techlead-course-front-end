@@ -1,148 +1,105 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { select } from "redux-saga/effects";
 import ModuleCheckoutSummary from "~/components/shared/forms/modules/ModuleCheckoutSummary";
+import useStore from "~/hooks/store/useStore";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
+
+import DateTimePicker from "react-datetime-picker/dist/entry.nostyle";
+import "react-datetime-picker/dist/DateTimePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
 const FormCheckout = () => {
+    // const [startDate, setStartDate] = useState(new Date());
+    const [value, onChange] = useState(new Date());
+    const [showAddress, setShowAddress] = useState(false);
+    const [storeAddress, setStoreAddress] = useState("");
+    const { getListStore, listStore, isLoading, getStore } = useStore();
+
+    useEffect(() => {
+        getListStore();
+    }, []);
+
+    const handleStoreChange = (event) => {
+        var storeId = event.target.value,
+            storeAddress = "";
+        listStore.forEach(function (store) {
+            if (storeId == store.id) {
+                console.log(store.address);
+                setShowAddress(true);
+                storeAddress =
+                    store.address.detail +
+                    store.address.ward +
+                    store.address.district +
+                    store.address.city;
+                setStoreAddress(store.address);
+                return false;
+            }
+        });
+    };
     return (
         <form className="ps-form--checkout" action="/" method="get">
             <div className="ps-form__billings">
-                <h4 className="ps-form__heading">Billing Details</h4>
                 <div className="row">
-                    <div className="col-sm-6">
-                        <div className="form-group">
-                            <label>
-                                First Name <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="form-group">
-                            <label>
-                                First Name <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-12">
-                        <div className="form-group">
-                            <label>Company Name (optional)</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
                     <div className="col-sm-12">
                         <div className="form-group">
                             <label>
-                                Country <sup>*</sup>
+                                Please choose a store <sup>*</sup>
                             </label>
-                            <select className="ps-select form-control">
-                                <option value="1">USA</option>
-                                <option value="2">England</option>
-                                <option value="3">Japan</option>
+                            <select
+                                className="ps-select form-control"
+                                onChange={handleStoreChange}>
+                                {listStore.map(
+                                    ({ id, name, address }, index) => (
+                                        <option value={id}>
+                                            {name} ({address.map_name}){" "}
+                                        </option>
+                                    )
+                                )}
                             </select>
-                        </div>
-                    </div>
-                    <div className="col-sm-12">
-                        <div className="form-group">
-                            <label>
-                                Street address <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="House number and street name"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-12">
-                        <div className="form-group">
-                            <label>Postcode / ZIP (optional)</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder="Apartment, suite, unit etc. (optional)"
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-12">
-                        <div className="form-group">
-                            <label>
-                                Town / City <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="form-group">
-                            <label>
-                                Email <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="form-group">
-                            <label>
-                                Phone <sup>*</sup>
-                            </label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                placeholder=""
-                            />
-                        </div>
-                    </div>
-                    {/*<div className="col-sm-12">
-                        <div className="form-group create-account">
-                            <div className="ps-checkbox">
-                                <input
-                                    className="form-control"
-                                    type="checkbox"
-                                    id="createAccount"
-                                    name="createAccount"
-                                />
-                                <label htmlFor="createAccount">
-                                    Create An account
-                                </label>
+                            <div
+                                style={{
+                                    display: showAddress ? "block" : "none",
+                                }}>
+                                <table>
+                                    <tr>
+                                        <td>Tỉnh/Thành Phố: </td>
+                                        <td>{storeAddress.city}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quận/Huyện: </td>
+                                        <td>{storeAddress.district}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phường/Xã:</td>
+                                        <td>{storeAddress.ward}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Số nhà/Đường:</td>
+                                        <td>{storeAddress.detail}</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
-                    </div>*/}
-                    {/*<div className="col-sm-12">
-                        <div className="form-group shipping">
-                            <div className="ps-checkbox">
-                                <input
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Please choose a time to pick up</label>
+                            <div class="input-group date" id="datetimepicker1">
+                                <DateTimePicker
+                                    style="boder: none"
                                     className="form-control"
-                                    type="checkbox"
-                                    id="shipping"
-                                    name="shipping"
+                                    onChange={onChange}
+                                    value={value}
+                                    format="d-m-y H:m"
                                 />
-                                <label htmlFor="shipping">
-                                    <strong>
-                                        Shipping to different Address
-                                    </strong>
-                                </label>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
                             </div>
                         </div>
-                    </div>*/}
+                    </div>
                     <div className="col-sm-12">
                         <div className="form-group">
                             <label>Order notes (optional)</label>
