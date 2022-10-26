@@ -14,7 +14,7 @@ export default function useUser() {
             setLoading(true);
             const res = await UserRepository.login(payload);
 
-            console.log('user login res', user);
+            console.log('user login res', res);
             setCurrentUser(res.data.data);
             setLoading(false);
         },
@@ -22,7 +22,7 @@ export default function useUser() {
             setLoading(true);
             const res = await UserRepository.register(payload);
 
-            console.log('user register res', user);
+            console.log('user register res', res);
             setCurrentUser(res.data.data);
             setLoading(false);
         },

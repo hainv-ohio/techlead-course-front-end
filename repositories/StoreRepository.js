@@ -1,12 +1,10 @@
 import Repository, { baseDomain, serializeQuery, customHeaders } from "./Repository";
 
-const storeApiUrl = process.env.NEXT_PUBLIC_STORE_API_ENDPOINT;
-class UserRepository {
+class StoreRepository {
     async getListStore() {
         var listStore = [];
         try {
-            const url = storeApiUrl + '/store/list';
-            const response = await Repository.get(url);
+            const response = await Repository.get(`${baseDomain}/store/list`);
             if(response.status == 200){
                 listStore = response.data
             }
@@ -17,4 +15,4 @@ class UserRepository {
     }
 }
 
-export default new UserRepository();
+export default new StoreRepository();

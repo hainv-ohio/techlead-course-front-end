@@ -2,7 +2,7 @@ const nextSettings = {
     optimizeFonts: false,
     //crossOrigin: "anonymous",
     env: {
-        storeApiUrl : process.env.STORE_API_ENDPOINT,
+        apiEndpoint : process.env.NEXT_PUBLIC_API_ENDPOINT,
         title: "MyMedi",
         titleDescription: "React Ecomerce template with RESTFul API",
     },

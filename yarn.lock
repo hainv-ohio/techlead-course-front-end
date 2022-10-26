@@ -53,9 +53,14 @@
   "resolved" "https://registry.npmjs.org/@next/env/-/env-12.2.5.tgz"
   "version" "12.2.5"
 
-"@next/swc-win32-x64-msvc@12.2.5":
-  "integrity" "sha512-7h5/ahY7NeaO2xygqVrSG/Y8Vs4cdjxIjowTZ5W6CKoTKn7tmnuxlUc2h74x06FKmbhAd9agOjr/AOKyxYYm9Q=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.2.5.tgz"
+"@next/swc-linux-x64-gnu@12.2.5":
+  "integrity" "sha512-0szyAo8jMCClkjNK0hknjhmAngUppoRekW6OAezbEYwHXN/VNtsXbfzgYOqjKWxEx3OoAzrT3jLwAF0HdX2MEw=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-12.2.5.tgz"
+  "version" "12.2.5"
+
+"@next/swc-linux-x64-musl@12.2.5":
+  "integrity" "sha512-zg/Y6oBar1yVnW6Il1I/08/2ukWtOG6s3acdJdEyIdsCzyQi4RLxbbhkD/EGQyhqBvd3QrC6ZXQEXighQUAZ0g=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-12.2.5.tgz"
   "version" "12.2.5"
 
 "@popperjs/core@^2.0.0", "@popperjs/core@^2.9.2":
@@ -860,6 +865,11 @@
     "has-symbols" "^1.0.3"
     "object-keys" "^1.1.1"
 
+"package.json@^0.0.0":
+  "integrity" "sha512-4IJoBrMPxhC4cWwViXg7omAK6E/QD3F/DfmD1g20EI4AcV6V/KG5NqqLC2xjCclY1N5V7D+j6rJxi4mXyxIsMg=="
+  "resolved" "https://registry.npmjs.org/package.json/-/package.json-0.0.0.tgz"
+  "version" "0.0.0"
+
 "path-to-regexp@^2.1.0":
   "integrity" "sha512-G6zHoVqC6GGTQkZwF4lkuEyMbVOjoBKAEybQUypI1WTkqinCOrq2x6U2+phkJ1XsEMTy4LjtwPI7HW+NVrRR2w=="
   "resolved" "https://registry.npmjs.org/path-to-regexp/-/path-to-regexp-2.4.0.tgz"
@@ -1395,17 +1405,7 @@
     "blacklist" "^1.1.2"
     "react-motion" "^0.2.7"
 
-"react-is@^16.12.0":
-  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
-  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
-  "version" "16.13.1"
-
-"react-is@^16.13.1":
-  "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
-  "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
-  "version" "16.13.1"
-
-"react-is@^16.7.0":
+"react-is@^16.12.0", "react-is@^16.13.1", "react-is@^16.7.0":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
