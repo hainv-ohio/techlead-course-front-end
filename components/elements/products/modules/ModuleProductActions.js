@@ -17,10 +17,6 @@ const ModuleProductActions = ({
 
     function handleAddItemToCart(e) {
         e.preventDefault();
-
-        console.log('handleAddItemToCart');
-        console.log(e);
-
         addItem({ id: product.id, quantity: 1 }, ecomerce.cartItems, "cart");
         dispatch(toggleDrawer(true));
     }

@@ -57,8 +57,9 @@ class ProductRepository {
         const endPoint = `${baseDomain}/item/get-items-by-ids/${payload}`;
         const reponse = await Repository.get(endPoint)
             .then((response) => {
-                if (response.data && response.data.length > 0) {
-                    return response.data;
+                console.log(response)
+                if (response.data && response.data.data.length > 0) {
+                    return response.data.data;
                 } else {
                     return null;
                 }

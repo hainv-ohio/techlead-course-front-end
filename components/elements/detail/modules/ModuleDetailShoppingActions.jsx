@@ -11,11 +11,6 @@ const ModuleDetailShoppingActions = ({ product, cart, ecomerce }) => {
 
     const handleAddItemToCart = (e) => {
         e.preventDefault();
-
-        console.log('handleAddItemToCart ModuleDetailShoppingActions');
-        console.log(e);
-        console.log(product);
-
         addItem({ id: product.id, quantity: 1 }, ecomerce.cartItems, "cart");
         dispatch(toggleDrawer(true));
     };
