@@ -67,9 +67,6 @@ export default function useProduct() {
             }
         },
         price: (payload) => {
-            console.log('--- price payload ---');
-            console.log(payload);
-
             let view;
             if (payload.sale_price) {
                 view = (

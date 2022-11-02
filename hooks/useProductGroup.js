@@ -46,10 +46,6 @@ export default function useProductGroup() {
         },
         withGrid: (source, loading, columns = 5) => {
             let view;
-
-            console.log('----- with grde source -----');
-            console.log(source)
-
             if (!loading) {
                 if (source && source.length > 0) {
                     const items = source.map((item) => (

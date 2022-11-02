@@ -24,9 +24,9 @@ export default function useEcomerce() {
                 let queries = "";
                 payload.forEach((item) => {
                     if (queries === "") {
-                        queries = `id_in=${item.id}`;
+                        queries = `${item.id}`;
                     } else {
-                        queries = queries + `&id_in=${item.id}`;
+                        queries = queries + `&${item.id}`;
                     }
                 });
 
@@ -36,6 +36,10 @@ export default function useEcomerce() {
                 const responseData = await ProductRepository.getProductsByIds(
                     queries
                 );
+
+                console.log('--- cart responedata ---')
+                console.log(responseData)
+
                 if (responseData && responseData.length > 0) {
                     if (group === "cart") {
                         let cartItems = responseData;
