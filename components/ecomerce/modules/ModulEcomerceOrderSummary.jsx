@@ -5,15 +5,41 @@ import useEcomerce from "~/hooks/useEcomerce";
 import Link from "next/link";
 
 const ModulEcomerceOrderSummary = ({ ecomerce }) => {
-    const { products, getProducts } = useEcomerce();
+    const { products, getProducts, placeOrder } = useEcomerce();
     useEffect(() => {
         getProducts(ecomerce.cartItems, "cart");
     }, [ecomerce]);
 
+    function handlePlaceOrder(e, payload) {
+        e.preventDefault();
+        placeOrder(payload);
+    }
+
     // Views
     let cartItemsView,
-        amountView = "0.00";
+        amountView = "0.00",
+        items = [],
+        payload;
+
+    payload = {
+        "store_id": "3b365b32-d7bc-422f-b501-3205484d6213",
+        "customer_id": "3b365b32-d7bc-422f-b501-3205484d6213",
+        "status": 1,
+        "take_time_from": "2022-11-03 16:41:48.890",
+        "take_time_to": "2022-11-03 23:59:48.890",
+        "items": []
+    };
     if (products && products.length > 0) {
+        products.forEach(product => {
+            let data = {
+                "item_id": product.id,
+                "qty": product.quantity,
+                "price": product.price
+            }
+            items.push(data)
+        });
+
+        payload.items = items;
         amountView = calculateAmount(products);
         cartItemsView = products.map((item) => (
             <div className="ps-checkout__row ps-product" key={item.id}>
@@ -109,9 +135,9 @@ const ModulEcomerceOrderSummary = ({ ecomerce }) => {
                             </label>
                         </div>
                     </div>
-                    <Link href="/shop/order-success">
-                        <a className="ps-btn ps-btn--warning">Place order</a>
-                    </Link>
+                        <a href="#"
+                        onClick={(e) => handlePlaceOrder(e, payload)} 
+                        className="ps-btn ps-btn--warning">Place order</a>
                 </div>
             </div>
         </>

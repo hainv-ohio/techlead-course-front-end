@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import Router from 'next/router'
 import ProductRepository from "~/repositories/ProductRepository";
+import OrderRepository from "~/repositories/OrderRepository";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import {
@@ -18,6 +20,20 @@ export default function useEcomerce() {
         loading,
         cartItemsOnCookie,
         products,
+
+        placeOrder: async (payload) => {
+            setLoading(true);
+            if (payload) {
+                let result = await OrderRepository.placeOrder(payload);
+                console.log('--- result ---');
+                console.log(result);
+                if (result) {
+                    setCookie("cart", [], { path: "/" });
+                    dispatch(setCartItems([]));
+                    return Router.push('/shop/order-success');
+                }
+            }
+        },
         getProducts: async (payload, group = "") => {
             setLoading(true);
             if (payload && payload.length > 0) {

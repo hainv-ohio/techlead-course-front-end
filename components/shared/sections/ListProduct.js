@@ -3,7 +3,7 @@ import useGetListproduct from "~/hooks/product/useGetListproduct";
 import useProductGroup from "~/hooks/useProductGroup";
 import Link from "next/link";
 const HomeOneProductList = ({
-    title = "List Products 123"
+    title = "List Products"
 }) => { 
     const { loading, listProduct, getListProduct } = useGetListproduct();
     const { withGrid } = useProductGroup();
