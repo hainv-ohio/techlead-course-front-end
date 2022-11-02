@@ -1,22 +1,30 @@
-import React from "react";
+import { React, useEffect, useState} from "react";
 import Container from "~/components/layouts/Container";
 import useUser from "~/hooks/useUser";
+import Router from 'next/router'
 
 const MyAccountScreen = () => {
-    const { loading, userLogin, userRegister, currentUser } = useUser();
+    const { loading, userLogin, userRegister, currentUser, userLogout } = useUser();
+    const [user, setUser] = useState("");
+    
+    useEffect(() => {
+        const userLoggedIn = JSON.parse(localStorage.getItem('user'));
+        if(userLoggedIn){
+            setUser(userLoggedIn);
+        }
+    }, [])
 
     function handleLoginSubmit(event) {
         event.preventDefault()
-        console.log('form submit', event);
         userLogin({
             email: event.currentTarget.elements.email.value,
             password: event.currentTarget.elements.password.value,
         })
+        Router.reload(window.location.pathname);
     }
 
     function handleRegisterSubmit(event) {
         event.preventDefault()
-        console.log('form submit', event);
         if (event.currentTarget.elements.password.value == event.currentTarget.elements.re_password.value) {
             userRegister({
                 firstName: event.currentTarget.elements.firstName.value,
@@ -26,17 +34,27 @@ const MyAccountScreen = () => {
                 password: event.currentTarget.elements.password.value,
             })
         }
+        Router.reload(window.location.pathname);
     }
 
-    console.log('currentUser', currentUser);
+    function handleLogout(event) {
+        userLogout()
+        Router.reload(window.location.pathname);
+    }
+    
     let contentBody;
-    if (currentUser) {
+    if (user) {
         contentBody = (
             <div>
                 <p>Logged in:</p>
-                <p>Name: {currentUser.first_name} {currentUser.last_name}</p>
-                <p>Phone: {currentUser.phone}</p>
-                <p>Email: {currentUser.email}</p>
+                <p>Name: {user.first_name} {user.last_name}</p>
+                <p>Phone: {user.phone}</p>
+                <p>Email: {user.email}</p>
+                <div>
+                    <button onClick={handleLogout} className="ps-btn ps-btn--warning">
+                                Logout
+                    </button>
+                </div>
             </div>
         );
     } else {

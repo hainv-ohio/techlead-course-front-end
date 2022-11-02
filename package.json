@@ -8,6 +8,8 @@
         "start": "next start"
     },
     "dependencies": {
+        "express-jwt": "^6.0.0",
+        "jsonwebtoken": "^8.5.1",
         "antd": "^4.5.2",
         "axios": "^0.27.2",
         "cookie": "^0.4.1",

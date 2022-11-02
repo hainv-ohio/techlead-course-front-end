@@ -5,6 +5,7 @@ const nextSettings = {
         apiEndpoint : process.env.NEXT_PUBLIC_API_ENDPOINT,
         title: "MyMedi",
         titleDescription: "React Ecomerce template with RESTFul API",
+        appSecret : process.env.NEXT_PUBLIC_APP_SECRECT
     },
     eslint: {
         // Warning: Dangerously allow production builds to successfully complete even if
