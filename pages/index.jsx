@@ -13,6 +13,7 @@ import PromotionSecureInformation from "~/components/shared/sections/PromotionSe
 import HomeOnePromotionsTwo from "~/components/partials/homepages/home-1/HomeOnePromotionsTwo";
 import Testimonials from "~/components/shared/sections/Testimonials";
 import HeaderDefault from "~/components/shared/headers/HeaderDefault";
+import HomeOneProductList from "~/components/shared/sections/ListProduct";
 
 const HomeDefaultPage = () => {
     return (
@@ -22,18 +23,7 @@ const HomeDefaultPage = () => {
             <main id="homepage-one">
                 <HomeOneTopBanners />
                 <HomeOnePromotions />
-                <PopularCategories />
-                <LatestProducts />
-                <div className="container">
-                    <PromotionSecureInformation />
-                </div>
-                <BestDealOfWeek />
-                <TopSellers />
-                <HomeOnePromotionsTwo />
-                <FeaturedProducts />
-                <Testimonials />
-                <FollowInstagram />
-                <Subscribe />
+                <HomeOneProductList />
             </main>
         </Container>
     );

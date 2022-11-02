@@ -28,6 +28,9 @@ const breadcrumb = [
 const ShoppingCart = ({ ecomerce }) => {
     const { loading, products, getProducts } = useEcomerce();
 
+    console.log('--- shopping cart ---');
+    console.log(ecomerce);
+
     useEffect(() => {
         if (ecomerce.cartItems) {
             getProducts(ecomerce.cartItems, "cart");

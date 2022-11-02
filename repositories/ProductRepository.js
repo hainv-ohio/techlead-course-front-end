@@ -44,17 +44,17 @@ class ProductRepository {
 
     async getProductsById(payload) {
         const reponse = await Repository.get(
-            `${baseDomain}/products/${payload}`
+            `${baseDomain}/item/id/${payload}`
         )
             .then((response) => {
-                return response.data;
+                return response.data.data;
             })
             .catch((error) => ({ error: JSON.stringify(error) }));
         return reponse;
     }
 
     async getProductsByIds(payload) {
-        const endPoint = `${baseDomain}/products?${payload}`;
+        const endPoint = `${baseDomain}/item/get-items-by-ids/${payload}`;
         const reponse = await Repository.get(endPoint)
             .then((response) => {
                 if (response.data && response.data.length > 0) {

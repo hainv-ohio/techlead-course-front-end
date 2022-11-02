@@ -58,10 +58,17 @@ export default function useGetProducts() {
         },
 
         getProductById: async (payload) => {
+            console.log('--- payload ---');
+            console.log(payload);
+
             setLoading(true);
             const responseData = await ProductRepository.getProductsById(
                 payload
             );
+
+            console.log('--- product data ---');
+            console.log(responseData);
+
             if (responseData) {
                 setProduct(responseData);
                 setTimeout(

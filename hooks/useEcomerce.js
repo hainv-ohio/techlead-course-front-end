@@ -29,6 +29,10 @@ export default function useEcomerce() {
                         queries = queries + `&id_in=${item.id}`;
                     }
                 });
+
+                console.log('--- queries ---');
+                console.log(queries);
+
                 const responseData = await ProductRepository.getProductsByIds(
                     queries
                 );
@@ -89,6 +93,15 @@ export default function useEcomerce() {
         },
 
         addItem: (newItem, items, group) => {
+
+            console.log('add to cart data')
+            console.log('--- new item ---')
+            console.log(newItem)
+            console.log('--- items ---')
+            console.log(items)
+            console.log('--- groups ---')
+            console.log(group)
+
             let newItems = [];
             if (items) {
                 newItems = items;

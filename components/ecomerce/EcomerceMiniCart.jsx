@@ -29,6 +29,9 @@ const EcomerceMiniCart = ({ ecomerce }) => {
         removeItems("cart");
     }
 
+    console.log('--- EcomerceMiniCart ---');
+    console.log(ecomerce);
+
     useEffect(() => {
         // Get products in your shopping cart
         getProducts(ecomerce.cartItems, "cart");

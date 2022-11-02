@@ -23,6 +23,9 @@ const ProductDetailPage = () => {
         }
     }, [id]);
 
+    console.log('product jsx');
+    console.log(product);
+
     // View area
     let productView;
 
@@ -35,6 +38,8 @@ const ProductDetailPage = () => {
     } else {
         productView = <DetailDefault product={product} />;
     }
+    console.log(productView);
+    
     const breadcrumb = [
         {
             id: 1,
