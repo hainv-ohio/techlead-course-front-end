@@ -1,25 +1,19 @@
 import React from "react";
 import Link from "next/link";
 import useProduct from "~/hooks/useProduct";
-import ModuleProductRating from "~/components/elements/products/modules/ModuleProductRating";
-import ModuleProductImages from "~/components/elements/products/modules/ModuleProductImages";
+import ModuleProductImage from "~/components/elements/products/modules/ModuleProductImage";
 
 const ProductList = ({ product }) => {
-    const { price, badges } = useProduct();
+    const { price } = useProduct();
+    console.log('product info', product);
 
     return (
         <div className="ps-product ps-product--horizontal">
             <div className="ps-product__thumbnail">
-                <ModuleProductImages product={product} />
-                {badges(product)}
+                <ModuleProductImage product={product} />
             </div>
             <div className="ps-product__wrapper">
                 <div className="ps-product__content">
-                    <div className="ps-product__categories">
-                        <Link href="/shop">
-                            <a>Thermometer Brand</a>
-                        </Link>
-                    </div>
                     <h4 className="ps-product__title">
                         <Link
                             href="/product/[id]"
@@ -27,12 +21,6 @@ const ProductList = ({ product }) => {
                             <a>{product.name}</a>
                         </Link>
                     </h4>
-                    <ModuleProductRating />
-                    <ul className="ps-product__short-desc">
-                        <li>Study history up to 30 days</li>
-                        <li>Up to 5 users simultaneously</li>
-                        <li>Has HEALTH certificate</li>
-                    </ul>
                 </div>
                 <div className="ps-product__right">
                     {price(product)}

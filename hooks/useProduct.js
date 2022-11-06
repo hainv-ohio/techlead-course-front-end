@@ -44,27 +44,16 @@ function getImageURL(source, size) {
 export default function useProduct() {
     return {
         thumbnailImages: (payload) => {
-            if (payload) {
-                if (payload.thumbnail) {
-                    return (
-                        <>
-                            <LazyLoad>
-                                <img
-                                    src={getImageURL(payload.thumbnail)}
-                                    alt=""
-                                />
-                            </LazyLoad>
-                            <LazyLoad>
-                                <img
-                                    src={getImageURL(payload.thumbnail)}
-                                    className="second"
-                                    alt=""
-                                />
-                            </LazyLoad>
-                        </>
-                    );
-                }
-            }
+            return (
+                <>
+                    <LazyLoad>
+                        <img
+                            src={getImageURL(payload.thumbnail)}
+                            alt=""
+                        />
+                    </LazyLoad>
+                </>
+            );
         },
         price: (payload) => {
             let view;

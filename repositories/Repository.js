@@ -6,6 +6,8 @@ export const baseUrlProduct = "https://mymedi.noudeveloper.com";
 
 export const customHeaders = {
     Accept: "application/json",
+    "Access-Control-Allow-Origin": baseDomain,
+    "Access-Control-Allow-Origin": "*"
     // authorization: ReactSession.get("token")
 };
 
