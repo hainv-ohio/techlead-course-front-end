@@ -48,7 +48,8 @@ export default function useProduct() {
                 <>
                     <LazyLoad>
                         <img
-                            src={getImageURL(payload.thumbnail)}
+                            // src={getImageURL(payload.thumbnail)}
+                            src="/static/img/products/medicine1.jpg"
                             alt=""
                         />
                     </LazyLoad>

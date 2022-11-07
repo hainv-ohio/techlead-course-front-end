@@ -1,7 +1,7 @@
 import React from "react";
 import ModuleShopActions from "~/components/partials/shop/modules/ModuleShopActions";
 import CustomPagination from "~/components/elements/basic/CustomPagination";
-import Products from '~/components/elements/products/Products';
+import SectionListProduct from '~/components/shared/sections/ListProduct'
 
 const Shop = ({ children, classes, fullwidth = false, actions = true }) => {
     let actionsView;
@@ -18,7 +18,7 @@ const Shop = ({ children, classes, fullwidth = false, actions = true }) => {
         return (
             <div className={`ps-shop ${classes}`}>
                 {actionsView}
-                <div className="ps-shop__content"><Products /></div>
+                <div className="ps-shop__content"><SectionListProduct /></div>
                 <div className="ps-shop__footer">
                     <CustomPagination />
                 </div>
