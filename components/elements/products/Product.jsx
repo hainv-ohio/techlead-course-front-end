@@ -24,8 +24,16 @@ const Product = ({ product }) => {
                         <a>{product.name}</a>
                     </Link>
                 </h4>
+                <p class="ps-product__sku">
+                    <strong>SKU: </strong>
+                    <strong>{product.sku}</strong>
+                </p>
                 {price(product)}
-                <ModuleProductRating />
+                <br></br>
+                <Link href="/product/[id]" as={`/product/${product.id}`}>
+                    <a className="ps-btn">View Product</a>
+                </Link>
+
             </div>
         </div>
     );

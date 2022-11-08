@@ -9,12 +9,11 @@ const ModuleDetailTopInformation = ({ product }) => {
 
     return (
         <header className="ps-product__top-info">
-            <div className="ps-product__categories">{brand(product)}</div>
             <h1 className="ps-product__title">{product.name}</h1>
-            <div className="ps-product__rating">
-                <Rating />
-                <span className="ml-20">(1 review)</span>
-            </div>
+            <p>
+                <strong>SKU: </strong>
+                <span>{product.sku}</span>
+            </p>
         </header>
     );
 };

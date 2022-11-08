@@ -23,11 +23,10 @@ const ProductDetailPage = () => {
         }
     }, [id]);
 
-    console.log('product jsx');
-    console.log(product);
 
     // View area
     let productView;
+    let currentProduct;
 
     if (loading || product === null) {
         productView = (
@@ -37,6 +36,7 @@ const ProductDetailPage = () => {
         );
     } else {
         productView = <DetailDefault product={product} />;
+        currentProduct = product;
     }
     console.log(productView);
     
@@ -53,7 +53,7 @@ const ProductDetailPage = () => {
         },
         {
             id: 3,
-            text: " Face Masks - protective",
+            text: " Product"
         },
     ];
     return (
@@ -67,8 +67,6 @@ const ProductDetailPage = () => {
                         <div className="ps-layout--with-sidebar ps-reverse">
                             <div className="ps-layout__left">
                                 <WidgetProductPromotion />
-                                <WidgetShopRelatedProducts />
-                                <WidgetShopPromotion />
                             </div>
                             <div className="ps-layout__right">
                                 {productView}
@@ -76,7 +74,6 @@ const ProductDetailPage = () => {
                         </div>
                     </div>
                 </div>
-                <CustomerBought />
             </div>
         </Container>
     );

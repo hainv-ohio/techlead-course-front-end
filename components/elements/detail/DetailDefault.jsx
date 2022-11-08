@@ -10,13 +10,14 @@ import ModuleDetailColors from "~/components/elements/detail/modules/ModuleDetai
 import ModuleDetailSizes from "~/components/elements/detail/modules/ModuleDetailSizes";
 import ModuleDetailTabs from "~/components/elements/detail/modules/ModuleDetailTabs";
 import FrequentlyBoughtTogether from "~/components/partials/products/FrequentlyBoughtTogether";
+import ModuleProductImages from "~/components/elements/products/modules/ModuleProductImages";
 
 const DetailDefault = ({ product, status = "in-stock" }) => {
     const { price } = useProduct();
     let statusView;
     if (status !== "out-stock") {
         statusView = (
-            <p className="ps-product__log-status">Only 3 left in stock</p>
+            <p className="ps-product__log-status">In stock</p>
         );
     } else {
         statusView = (
@@ -27,26 +28,20 @@ const DetailDefault = ({ product, status = "in-stock" }) => {
     return (
         <div className="product--detail ps-product--detail">
             <div className="ps-product__header">
-                <ModuleDetailThumbnail product={product} />
+                <ModuleProductImages product={product} />
                 <div className="ps-product__info">
                     {statusView}
                     <ModuleDetailTopInformation product={product} />
                     <ModuleProductDetailDescription product={product} />
                     {price(product)}
-                    <div className="ps-product__variants">
-                        <ModuleDetailColors />
-                        <ModuleDetailSizes />
-                    </div>
                     {status !== "out-stock" && (
                         <ModuleDetailShoppingActions product={product} />
                     )}
-                    <ModuleDetailMeta />
                     <ModuleProductDetailSharing />
                 </div>
             </div>
             <div className="ps-product__content ">
-                <FrequentlyBoughtTogether />
-                <ModuleDetailTabs />
+                <ModuleDetailTabs product={product}/>
             </div>
         </div>
     );

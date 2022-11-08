@@ -2,6 +2,7 @@ import React from "react";
 import LazyLoad from "react-lazyload";
 import { formatCurrency } from "~/utilities/product-helper";
 import Link from "next/link";
+export const baseImageUrl = process.env.NEXT_PUBLIC_FE_URL;
 
 function getImageURL(source, size) {
     let image, imageURL;
@@ -34,7 +35,7 @@ function getImageURL(source, size) {
         } else {
             image = source.url;
         }
-        imageURL = `${baseUrl}${image}`;
+        imageURL = `${baseImageUrl}${image}`;
     } else {
         imageURL = `/static/img/undefined-product-thumbnail.jpg`;
     }
@@ -44,12 +45,13 @@ function getImageURL(source, size) {
 export default function useProduct() {
     return {
         thumbnailImages: (payload) => {
+            const imageURL = '/static/img/products/' + payload.image;
             return (
                 <>
                     <LazyLoad>
                         <img
-                            // src={getImageURL(payload.thumbnail)}
-                            src="/static/img/products/medicine1.jpg"
+                            src={imageURL}
+                            // src="/static/img/products/medicine1.jpg"
                             alt=""
                         />
                     </LazyLoad>
@@ -72,8 +74,8 @@ export default function useProduct() {
             } else {
                 view = (
                     <p className="ps-product__price">
-                        <span>$</span>
                         {formatCurrency(payload.price)}
+                        <span> {payload.currency_code}</span>
                     </p>
                 );
             }

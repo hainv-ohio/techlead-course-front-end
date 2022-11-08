@@ -44,7 +44,7 @@ export default function useProductGroup() {
             }
             return carousel;
         },
-        withGrid: (source, loading, columns = 5) => {
+        withGrid: (source, loading, columns = 4) => {
             let view;
             if (!loading) {
                 if (source && source.length > 0) {
