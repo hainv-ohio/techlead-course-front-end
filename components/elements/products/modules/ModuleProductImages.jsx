@@ -7,7 +7,7 @@ const ModuleProductImages = ({ product }) => {
     return (
         <div className="ps-product__images">
             <Link href="/product/[id]" as={`/product/${product.id}`}>
-                <a className="ps-product__overlay"></a>
+                <a className=""></a>
             </Link>
             {thumbnailImages(product)}
         </div>
